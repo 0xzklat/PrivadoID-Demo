@@ -23,7 +23,7 @@ const validStateCodes = [
 ];
 
 // Custom hook for ZKP and remittance logic
-const usePrivadoID = () => {
+const useRemeSov = () => {
   const fraudAI = (id: string): string => {
     const curpRegex = /^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z\d]\d$/;
     if (id.length !== 18 || !curpRegex.test(id)) {
@@ -158,13 +158,13 @@ const usePrivadoID = () => {
 };
 
 // Bilingual TTS
-const speak = (text: string, lang: 'es-MX' | 'en-US' = 'es-MX') => {
+const speak = (text: string, lang: 'es-MX' | 'pt_BR' = 'es-MX') => {
   Tts.setDefaultLanguage(lang);
   Tts.setDefaultPitch(1.2);
   Tts.speak(text);
 };
 
-export default function PrivadoIDDemo() {
+export default function RemeSovDemo() {
   const [step, setStep] = useState(0);
   const [curp, setCurp] = useState('');
   const [proof, setProof] = useState<{ proof: any; publicSignals: any } | null>(null);
@@ -173,7 +173,7 @@ export default function PrivadoIDDemo() {
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
   const cameraRef = useRef<Camera>(null);
   const [fontsLoaded] = useFonts({ Poppins_400Regular, Poppins_700Bold });
-  const { generateZKProof, claimRemittance } = usePrivadoID();
+  const { generateZKProof, claimRemittance } = useRemeSov();
 
   useEffect(() => {
     const initialize = async () => {
@@ -264,7 +264,7 @@ export default function PrivadoIDDemo() {
     try {
       const result = await claimRemittance(proof.proof, proof.publicSignals);
       Alert.alert('¡Éxito!', `Remesa de $${result.amount} lista en Oxxo via SPEI. Tx: ${result.txHash}`);
-      speak('¡Gracias! PrivadoID te cuida.');
+      speak('¡Gracias! RemeSov te cuida.');
       setStep(3);
     } catch (error) {
       speak('Error al reclamar.', 'es-MX');
@@ -276,7 +276,7 @@ export default function PrivadoIDDemo() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>PrivadoID: Oaxaca Demo</Text>
+      <Text style={styles.title}>RemeSov: Oaxaca Demo</Text>
       <Text style={styles.subtitle}>Step {step + 1}/4</Text>
       {step === 0 && (
         <>

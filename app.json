@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "PrivadoID-Demo",
-    "slug": "PrivadoID-Demo",
+    "name": "RemeSov-Demo",
+    "slug": "RemeSov-Demo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.PrivadoIDDemo"
+      "bundleIdentifier": "com.anonymous.RemeSovDemo"
     },
     "permissions": [
       "camera"
@@ -29,7 +29,7 @@
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "com.anonymous.PrivadoIDDemo"
+      "package": "com.anonymous.RemeSovDemo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -42,8 +42,8 @@
       // Android: Add CAMERA permission to AndroidManifest.xml.
         "react-native-vision-camera",
         {
-          "cameraPermissionText": "Allow PrivadoID to access your camera.",
-          "microphonePermissionText": "Allow PrivadoID to access your microphone."
+          "cameraPermissionText": "Allow RemeSov to access your camera.",
+          "microphonePermissionText": "Allow RemeSov to access your microphone."
         }
       ],
       // react-native-text-recognition: Requires manual setup (not an Expo plugin).
