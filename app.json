@@ -13,18 +13,67 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.PrivadoIDDemo"
     },
+    "permissions": [
+      "camera"
+    ],
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.anonymous.PrivadoIDDemo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [["expo-camera", { "cameraPermission": "Allow PrivadoID to access your camera." }]]
+    "plugins": [
+      [
+      // react-native-vision-camera: Requires manual setup (not an Expo plugin).
+      // Add to native files:
+      // iOS: Add NSCameraUsageDescription to Info.plist with message below.
+      // Android: Add CAMERA permission to AndroidManifest.xml.
+        "react-native-vision-camera",
+        {
+          "cameraPermissionText": "Allow PrivadoID to access your camera.",
+          "microphonePermissionText": "Allow PrivadoID to access your microphone."
+        }
+      ],
+      // react-native-text-recognition: Requires manual setup (not an Expo plugin).
+      // iOS: Add NSPhotoLibraryUsageDescription to Info.plist if accessing photos.
+      // Android: No additional permissions typically required for text recognition.
+      "react-native-text-recognition",
+      [
+        "react-native-secure-storage",
+        {
+          "keychainService  ": "myKeychain", 
+          "sharedPreferencesName": "mySharedPrefs",
+          "accessible": "WHEN_UNLOCKED"
+        }
+      ],
+      "react-native-tts"
+    ],
+    "extra": {
+      "eas": {  
+        "projectId": "b1c9f0e3-2f3e-4d5a-8f4e-123456789abc" 
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "dependencies": [
+      "react-native-vision-camera",
+      "react-native-text-recognition",
+      "react-native-tts",
+      "expo-secure-store",
+      "expo-asset"
+    ]
   }
 }
